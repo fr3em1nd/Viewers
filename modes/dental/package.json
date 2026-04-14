@@ -1,0 +1,50 @@
+{
+  "name": "@ohif/mode-dental",
+  "version": "3.13.0-beta.57",
+  "description": "OHIF Dental Mode - Dental imaging workflow with measurements palette and 2x2 layout",
+  "author": "OHIF Contributors",
+  "license": "MIT",
+  "main": "dist/ohif-mode-dental.js",
+  "module": "src/index.ts",
+  "files": [
+    "dist/**",
+    "public/**",
+    "README.md"
+  ],
+  "repository": "OHIF/Viewers",
+  "keywords": [
+    "ohif-mode"
+  ],
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6",
+    "yarn": ">=1.16.0"
+  },
+  "peerDependencies": {
+    "@ohif/core": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone-dicom-sr": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone-dicom-seg": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone-dicom-pmap": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone-dicom-rt": "3.13.0-beta.57",
+    "@ohif/extension-default": "3.13.0-beta.57",
+    "@ohif/extension-dental": "3.13.0-beta.57",
+    "@ohif/extension-dicom-pdf": "3.13.0-beta.57",
+    "@ohif/extension-dicom-video": "3.13.0-beta.57"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.28.2"
+  },
+  "devDependencies": {
+    "webpack": "5.105.0",
+    "webpack-merge": "5.10.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --config .webpack/webpack.dev.js --watch --output-pathinfo",
+    "build": "cross-env NODE_ENV=production webpack --config .webpack/webpack.prod.js",
+    "build:package": "yarn run build",
+    "start": "yarn run dev",
+    "test:unit": "jest --watchAll",
+    "test:unit:ci": "jest --ci --runInBand --collectCoverage --passWithNoTests"
+  }
+}

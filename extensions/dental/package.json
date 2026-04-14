@@ -1,0 +1,44 @@
+{
+  "name": "@ohif/extension-dental",
+  "version": "3.13.0-beta.57",
+  "description": "OHIF Dental Extension - Dental Mode UI, Practice Header, Tooth Selector, and Measurements Palette",
+  "author": "OHIF Contributors",
+  "license": "MIT",
+  "repository": "OHIF/Viewers",
+  "main": "dist/ohif-extension-dental.umd.js",
+  "module": "src/index.ts",
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6",
+    "yarn": ">=1.16.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@ohif/core": "3.13.0-beta.57",
+    "@ohif/ui-next": "3.13.0-beta.57",
+    "@ohif/extension-cornerstone": "3.13.0-beta.57",
+    "@ohif/extension-default": "3.13.0-beta.57",
+    "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.28.2"
+  },
+  "devDependencies": {
+    "webpack": "5.105.0",
+    "webpack-merge": "5.10.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --config .webpack/webpack.dev.js --watch --output-pathinfo",
+    "build": "cross-env NODE_ENV=production webpack --config .webpack/webpack.prod.js",
+    "build:package": "yarn run build",
+    "start": "yarn run dev",
+    "test:unit": "jest --watchAll",
+    "test:unit:ci": "jest --ci --runInBand --collectCoverage --passWithNoTests"
+  }
+}
