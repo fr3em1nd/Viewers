@@ -3,10 +3,31 @@ import React from 'react';
 
 import PracticeHeader from './components/PracticeHeader';
 import DentalMeasurementsPanel from './panels/DentalMeasurementsPanel';
+import DentalViewerLayout from './ViewerLayout/DentalViewerLayout';
 import hpDental2x2 from './hangingprotocols/hpDental2x2';
 
 const dentalExtension = {
   id,
+
+  getLayoutTemplateModule({ servicesManager, extensionManager, commandsManager, hotkeysManager }) {
+    function DentalLayoutWithServices(props) {
+      return DentalViewerLayout({
+        servicesManager,
+        extensionManager,
+        commandsManager,
+        hotkeysManager,
+        ...props,
+      });
+    }
+
+    return [
+      {
+        name: 'dentalLayout',
+        id: 'dentalLayout',
+        component: DentalLayoutWithServices,
+      },
+    ];
+  },
 
   getPanelModule({ servicesManager, commandsManager, extensionManager }) {
     return [

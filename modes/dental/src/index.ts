@@ -10,7 +10,7 @@ const { structuredCloneWithFunctions } = utils;
 const NON_IMAGE_MODALITIES = ['SEG', 'RTSTRUCT', 'RTPLAN', 'PR', 'SR'];
 
 const ohif = {
-  layout: '@ohif/extension-default.layoutTemplateModule.viewerLayout',
+  layout: '@ohif/extension-dental.layoutTemplateModule.dentalLayout',
   sopClassHandler: '@ohif/extension-default.sopClassHandlerModule.stack',
   thumbnailList: '@ohif/extension-default.panelModule.seriesList',
 };
@@ -95,9 +95,9 @@ function onModeEnter({
   servicesManager,
   extensionManager,
   commandsManager,
-  panelService,
 }: withAppTypes) {
-  const { measurementService, toolbarService, toolGroupService } = servicesManager.services;
+  const { measurementService, toolbarService, toolGroupService, panelService } =
+    servicesManager.services;
 
   measurementService.clearMeasurements();
 

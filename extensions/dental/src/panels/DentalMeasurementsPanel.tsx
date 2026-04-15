@@ -102,12 +102,18 @@ export default function DentalMeasurementsPanel({
   const [filterType, setFilterType] = useState<FilterType>('all');
 
   const { measurementService } = servicesManager.services;
+  const measurementsRef = React.useRef<DentalMeasurement[]>([]);
+
+  // Keep ref in sync
+  measurementsRef.current = measurements;
 
   // Sync measurements from OHIF MeasurementService
   const syncMeasurements = useCallback(() => {
     const ohifMeasurements = measurementService.getMeasurements();
+    const prev = measurementsRef.current;
+
     const dentalMeasurements: DentalMeasurement[] = ohifMeasurements.map(m => {
-      const existingDental = measurements.find(dm => dm.uid === m.uid);
+      const existingDental = prev.find(dm => dm.uid === m.uid);
       const label = m.label || existingDental?.label || m.toolName || 'Measurement';
 
       let value: number | null = null;
